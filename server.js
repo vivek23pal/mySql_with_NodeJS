@@ -1,0 +1,11 @@
+var app = require("./config/imports").express();
+var bodyparser = require("./config/imports").bodyparser;
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended: false }));
+app.use(require("./config/imports").cors());
+app.use("/fetch", require("./fetch/fetch"));
+app.use("/insert", require("./insert/insert"));
+app.use("/update", require("./update/update"));
+app.use("/delete", require("./delete/delete"));
+app.listen(8080);
+console.log("Server Listening the port no.8080");
